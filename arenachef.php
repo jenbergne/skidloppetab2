@@ -11,12 +11,25 @@
 			<h2>Inskickade åtgärdspunkter</h2>
 			<!-- Hur löser vi raderaknappen? -->
 			
-			<?php /*include 'functions.php';*/ AC_view_AUProblem(); ?>
+			<?php /*include 'functions.php';*/ AC_view_AUProblem();?>
 		
 			<!-- Ny arbetsorder med info redan ifylld från inskickad åtgärdspunkt? -->			
 		</div>
+		<div class="flex">
+			<h2>Under förhandling</h2>
+			<?php AC_view_AOp(); ?>
+			<h2>Alla arbetsordrar</h2>
+			<?php AC_view_workOrder(); ?>
 	
-		<?php include 'arbetsorder.php';?>
+	</div>
+	
+		<?php/* include 'arbetsorder.php';*/?>
+		
+		<div class="flex">
+			<h3>Ny arbetsordsddssdder</h3>
+    		
+				<?php AC_update_workOrder(); ?>			
+		</div>     
 	
 		<div class="flex">		
 			<h2>Uppdatera nyhetsflöde</h2>
@@ -46,7 +59,7 @@
 				<button class="knapp" type="submit">SKICKA</button>
 			</form>
 			
-			<?php //Skickar in variablerna i funktionen AU_Problem
+			<?php 
 			if(isset($_POST['nHeader'])){
 				$nHeader = $_POST["nHeader"];
 				$nOrt = $_POST["nOrt"];
@@ -56,18 +69,33 @@
 		</div>
 		<div class="flex">
 			<h2>Öppna/stäng delsträckor</h2>
-				<form action="kontakt.php" method="post">
+				<form action="arenachef.php" method="post">
+
+					<input list="oOrt" name="oOrt">
 					
-					<input type="tel" name="del"  placeholder="Delsträcka"> <!-- dropdown/klick på karta -->
+					<datalist id="oOrt">
+						<option value="Hedemora-Norrhyttan">
+						<option value="Norrhyttan-Bondhyttan">
+						<option value="Bondhyttan-Bommansbo">
+						<option value="Bommansbo-Smedjebacken">
+						<option value="Smedjebacken-Björsjö">
+						<option value="Björsjö-Grängesberg">
+					</datalist>
 					
-					<input type="date" name="start" placeholder="Startdatum">
+					<input type="date" name="oDate" placeholder="Datum">
 					
-					<input type="date" name="slut" placeholder="Slutdatum">
 					
-					<textarea name="comment" placeholder="Information"></textarea><br>
+					
+					<textarea name="oInfo" placeholder="Information"></textarea><br>
 					<button class="knapp" type="submit">SKICKA</button>
 				</form>
-				
+				<?php 
+				if(isset($_POST['oOrt'])){
+					$oOrt = $_POST["oOrt"];
+					$oDate = $_POST["oDate"];
+					$oInfo = $_POST["oInfo"];
+					AC_update_delstracka($oOrt, $oDate, $oInfo);
+				}?>
 			<!-- <h2>Uppdatera karta</h2>
 			 <img src="images/BilderKartor3.jpg" alt="Karta" id="kartaindex" > -->
 			<!-- bild på karta med klick? -->
@@ -81,7 +109,7 @@
 		<div class="flex">
 		   <?php /* include 'arenachefue.php';*/?>
 			<h2>Underentreprenörer</h2>
-		   <?php AU_view_UE(); ?>
+		   <?php AC_view_UE(); ?>
 		</div>
 	
 	  <!--  <h2>Väderprognos</h2>-->  

@@ -9,27 +9,8 @@
 		eller ska det ändras på kartan färger direkt (flera bilder till en bildmap?) Väder ovanpå som bild? 
 		dynamiskt - animationer? eller enbart bilder som ändras? 
 		-->
+		<?php AU_view_closedDelstrackor(); ?>
 		
-		<table class="tabellstracka">
-			<tr>
-				<th>Sträcka</th>
-				<th>Status</th>
-				<th>Öppnas åter</th>
-				<th>Information</th>	
-			</tr>
-			<tr>
-				<td>Hedemora-Norrhyttan</td>
-				<td>Stängd</td>
-				<td>2017-02-02</td>
-				<td>Fallna träd</td>
-			</tr>
-			<tr>
-				<td>Norrhyttan-Bondhyttan</td>
-				<td>Öppen</td>
-				<td></td>
-				<td></td>
-			</tr>
-		</table>
 		
 	</div>
 	
